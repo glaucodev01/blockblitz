@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Block Blitz - Relaxe, Organize, Domine</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background-color: #0d1117;
+            --primary-text-color: #e6edf3;
+            --secondary-text-color: #7d8590;
+            --accent-color: #238636; /* Verde GitHub, pode ser trocado por um ciano ou laranja do jogo */
+            --card-background: rgba(22, 27, 34, 0.8);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--primary-text-color);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        /* Fundo Animado */
+        .background {
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
+            top: 0;
+            left: 0;
+            background: var(--background-color);
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bubbles span {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            position: absolute;
+            bottom: -50px;
+            animation: flying 15s linear infinite;
+        }
+
+        @keyframes flying {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-110vh); }
+        }
+
+        .bubbles span:nth-child(1) { left: 10%; animation-duration: 15s; animation-delay: 1s; width: 10px; height: 10px; }
+        .bubbles span:nth-child(2) { left: 20%; animation-duration: 10s; animation-delay: 3s; width: 20px; height: 20px; }
+        .bubbles span:nth-child(3) { left: 85%; animation-duration: 18s; animation-delay: 0s; width: 12px; height: 12px; }
+        .bubbles span:nth-child(4) { left: 40%; animation-duration: 12s; animation-delay: 5s; }
+        .bubbles span:nth-child(5) { left: 65%; animation-duration: 20s; animation-delay: 2s; width: 18px; height: 18px; }
+        .bubbles span:nth-child(6) { left: 90%; animation-duration: 9s;  animation-delay: 6s; }
+        .bubbles span:nth-child(7) { left: 50%; animation-duration: 22s; animation-delay: 4s; width: 10px; height: 10px; }
+
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 0;
+        }
+
+        .logo {
+            width: 160px;
+            height: 160px;
+            margin-bottom: 24px;
+            border-radius: 32px;
+            background-color: var(--card-background);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #FFFFFF;
+            margin: 0;
+            text-shadow: 0 0 20px rgba(0, 191, 255, 0.5);
+            animation: fadeIn 1s ease-out 0.2s backwards;
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            color: var(--secondary-text-color);
+            margin-top: 8px;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 0.4s backwards;
+        }
+
+        .cta-button a {
+            display: inline-block;
+            transition: transform 0.2s ease;
+            animation: fadeIn 1s ease-out 0.6s backwards;
+        }
+
+        .cta-button a:hover {
+            transform: scale(1.05);
+        }
+
+        .download-badge {
+            height: 75px;
+        }
+
+        .features-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: var(--card-background);
+            backdrop-filter: blur(5px);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .feature-card .icon {
+            font-size: 3rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin: 20px 0 10px 0;
+        }
+
+        .feature-card p {
+            color: var(--secondary-text-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--secondary-text-color);
+        }
+        
+        footer a {
+            color: var(--primary-text-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background">
+        <div class="bubbles">
+            <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+            <img src="blockblitz.png" alt="Ícone do Block Blitz" class="logo">
+            <h1>Block Blitz</h1>
+            <p class="tagline">Relaxe, organize e domine o tabuleiro.</p>
+            <div class="cta-button">
+                <a href="https://play.google.com/store/apps/details?id=net.glaucomv.blockblitz" target="_blank">
+                    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" class="download-badge">
+                </a>
+            </div>
+        </header>
+        
+        <section class="features-section">
+            <h2>Por que você vai amar o Block Blitz?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="icon">⭐</div>
+                    <h3>Níveis Progressivos</h3>
+                    <p>Comece em um ritmo tranquilo e avance para desafios que testarão sua mente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🧘</div>
+                    <h3>Jogabilidade Relaxante</h3>
+                    <p>Sem cronômetros ou pressão. Jogue no seu tempo e encontre seu estado de fluxo.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">💥</div>
+                    <h3>Combos Viciantes</h3>
+                    <p>Sinta a satisfação de limpar múltiplas linhas com animações e sons recompensadores.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 ByteFlow Studios</p>
+            <a href="politica-de-privacidade.html">Política de Privacidade</a>
+        </footer>
+    </div>
+
+</body>
+</html>
